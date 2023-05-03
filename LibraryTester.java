@@ -17,12 +17,18 @@ class LibraryTester{
 	Library.addBookName("The Bird with golden wings");
 	Library.addBookName("The GOPI Diaries");
 	Library.addBookName("Three Thousand Stiches");
+	Library.addBookName("DEATH");
 	//invoking method to read book names
 	Library.getBookNames();
 	// invoking method to update book name
 	Library.updateBookName("2 STATES","UGLY LOVE");
 	//invoking method to read book names
 	Library.getBookNames();
+	String available=Library.getBookName("2 STATES");
+	System.out.println("Book found is : "+available);
+	String available1=Library.getBookName("Believe In Yourself");
+	System.out.println("Book found is : "+available1);
+	
 	System.out.println("Main method ended");
 	}
 

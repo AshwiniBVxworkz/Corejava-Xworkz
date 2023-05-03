@@ -12,12 +12,18 @@ class MobileShopTester{
 		MobileShop.saveMobileName("Samsung Galaxy S23");
 		MobileShop.saveMobileName("Motorola Moto G82");
 		MobileShop.saveMobileName("HUAWEI");
-		// invoking method to read mobile name
-		MobileShop.readMobileName();
+		MobileShop.saveMobileName("Alcatel");
+		// invoking method to read mobile names
+		MobileShop.readMobileNames();
 		// invoking method to update mobile name
 		MobileShop.updateMobileName("HUAWEI","OPPO");
-		// invoking method to read mobile name
-		MobileShop.readMobileName();
+		// invoking method to read mobile names
+		MobileShop.readMobileNames();
+		// invoking method to search mobile name
+		String find=MobileShop.readMobileName("One Plus ");
+		System.out.println("Searched mobile is : "+find);
+		String find1=MobileShop.readMobileName(" Nokia ");
+		System.out.println("Searched mobile is : "+find1);
 		System.out.println("Main method ended");
 	}
 
