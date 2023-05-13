@@ -1,10 +1,6 @@
 class Pen{
-	//instance
-	String color;
-	String brandName;
-	double price;
-	public void write(){
-	System.out.println("Writing something");
-	}
 
+public static void main(String [] args){
+System.out.println("Early days ink pens i.e Hero pens were used very widely.");
+}
 }
