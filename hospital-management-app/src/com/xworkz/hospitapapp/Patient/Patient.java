@@ -17,10 +17,9 @@ public class Patient {
     private long phNo;
     private boolean isInsuranceAvailable;
     private  String attenderName;
-
-     GovtId govtId;
-
-
+    GovtId govtId;
+    private int wardNo;
+    private String address;
 
 
 
