@@ -13,6 +13,9 @@ public interface Hospital {
      Patient getPatientByAddress(String address);
      String[] getPatientNameByDiseaseName(String diseaseName);
      boolean updatePatientDiseaseByPatientName(String existingPatientName,String updateDisease);
+    Patient getPatientByPatientId(int patientId);
+    boolean updatePatientAgePatientId(int existingId,int  updateAge);
 
-
+    String getPatientAttenderNameByPatientId(int existingId);
+    String getPatientStreetNameById(int existingId);
 }

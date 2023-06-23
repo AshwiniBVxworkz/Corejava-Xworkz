@@ -19,7 +19,7 @@ public class Patient {
     private  String attenderName;
     GovtId govtId;
     private int wardNo;
-    private String address;
+    Address address;
 
 
 

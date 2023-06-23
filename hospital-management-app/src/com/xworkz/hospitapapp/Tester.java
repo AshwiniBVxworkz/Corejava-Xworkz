@@ -1,6 +1,6 @@
 package com.xworkz.hospitapapp;
 
-import com.xworkz.hospitapapp.Patient.Patient;
+import com.xworkz.hospitapapp.Patient.*;
 import com.xworkz.hospitapapp.constant.Gender;
 import com.xworkz.hospitapapp.constant.GovtId;
 import com.xworkz.hospitapapp.hospital.ApolloImpl;
@@ -36,8 +36,37 @@ public class Tester {
             patient.setGovtId(GovtId.valueOf(sc.next()));
             System.out.println("Enter the Ward Number");
             patient.setWardNo(sc.nextInt());
-            System.out.println("Enter PAtient's Address");
-            patient.setAddress(sc.next());
+            System.out.println("Enter Patient's Address");
+
+            DoorNumber doorNumber=new DoorNumber();
+            Street street=new Street();
+            Area area=new Area();
+            City city=new City();
+            State state=new State();
+            Country country=new Country();
+            Address address=new Address();
+         System.out.println("Enter the Door Number");
+            doorNumber.setDoorNumber(sc.nextInt());
+            System.out.println("Enter the Street Name");
+            street.setStreetName(sc.next());
+            System.out.println("Enter Area");
+            area.setArea(sc.next());
+            System.out.println("Enter City");
+            city.setCity(sc.next());
+            System.out.println("Enter State");
+            state.setState(sc.next());
+            System.out.println("Enter Country");
+            country.setCountry(sc.next());
+
+
+           patient.setAddress(address);
+           address.setCountry(country);
+           country.setState(state);
+           state.setCity(city);
+           city.setArea(area);
+           area.setStreet(street);
+           street.setDoorNumber(doorNumber);
+          address.setCountry( country);
             hos.addPatient(patient);
 
         }
@@ -56,20 +85,33 @@ public class Tester {
         hos.addPatient(pat);*/
 
         hos.getAllPatient();
-        System.out.println("Enter the address to find person");
+       /*System.out.println("Enter the address to find person");
         hos.getPatientByAddress(sc.next());
         System.out.println("The the ward Number to get patient in that ward ");
         hos.getPatientNameByWardNo(sc.nextInt());
         System.out.println("Enter the patientId to update Ward Number and Enter required Ward  NUmber");
         hos.updatePatientWardNoByPatientId(sc.nextInt(),sc.nextInt());
         System.out.println("Enter the disease to find Patient");
-        hos.getPatientNameByDiseaseName(sc.next());
+       String[] pat= hos.getPatientNameByDiseaseName(sc.next());
+        for (String p:pat) {
+            System.out.println(p);
+        }
         System.out.println(" Enter The patient Name and Enter The Disease to update ");
         hos.updatePatientDiseaseByPatientName(sc.next(),sc.next());
+        System.out.println(" Enter the existing Id and  Enter the age to update");
+        hos.updatePatientAgePatientId(sc.nextInt(), sc.nextInt());
+        hos.getAllPatient();*/
+        System.out.println(" Enter the Id to get Patient Details");
+        Patient p = hos.getPatientByPatientId(sc.nextInt());
+        System.out.println(p);
 
+        System.out.println("Enter the ID to get Attender's name");
+        String attender=hos.getPatientAttenderNameByPatientId(sc.nextInt());
+        System.out.println(attender);
 
-
-
+        System.out.println("Enter the patientId to find street name");
+        String patientStreetNameById= hos.getPatientStreetNameById(sc.nextInt());
+        System.out.println(patientStreetNameById);
 
 
     }

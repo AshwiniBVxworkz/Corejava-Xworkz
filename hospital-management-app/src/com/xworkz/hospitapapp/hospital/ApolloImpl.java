@@ -31,6 +31,16 @@ public class ApolloImpl implements Hospital {
     }
 
     @Override
+    public String getAllPatient() {
+        System.out.println("getAllPatient method invoked");
+        System.out.println(" List of Patients are:");
+        for (Patient pat:this.patient) {
+            System.out.println(pat);
+        }
+
+        return null;
+    }
+    @Override
     public Patient getPatientByAddress(String address) {
         System.out.println(" getPatientByAddress method is invoked");
         for (int i=0;i<this.patient.length;i++){
@@ -41,16 +51,7 @@ public class ApolloImpl implements Hospital {
         return null;
     }
 
-    @Override
-    public String getAllPatient() {
-        System.out.println("getAllPatient method invoked");
-        System.out.println(" List of Patients are:");
-        for (Patient pat:this.patient) {
-            System.out.println(pat);
-        }
 
-        return null;
-    }
 
     @Override
     public String getPatientNameByWardNo(int WardNo) {
@@ -87,14 +88,16 @@ public boolean updatePatientWardNoByPatientId(int existingId, int updateWardNo) 
     public String[] getPatientNameByDiseaseName(String diseaseName){
 
         System.out.println(" getPatientNameByDiseaseNAme is invoked");
-        for (int i=0;i< this.patient.length;i++) {
-            if (this.patient[i].getDiseaseName().equals(diseaseName)){
-                StringBuilder patientName=new StringBuilder();
-                patientName= patientName.append( this.patient[i].getPatientName());
-                System.out.println( patientName);
+        String[] patientName=new String[3];
+        int ind=0;
+        for (Patient pat :patient) {
+            if(pat.getDiseaseName().equals(diseaseName)){
+                patientName[ind++]=pat.getPatientName();
             }
+
         }
-        return null;
+        return patientName;
+        
     }
 
     public boolean updatePatientDiseaseByPatientName(String existingPatientName,String updateDisease){
@@ -110,6 +113,64 @@ public boolean updatePatientWardNoByPatientId(int existingId, int updateWardNo) 
         }
 
         return isUpdated;
+    }
+
+    @Override
+    public Patient getPatientByPatientId(int patientId) {
+        System.out.println(" getPatientByPatientId method is invoked");
+        Patient pat=null;
+        for(Patient p:patient){
+            if(p.getPatientId()==patientId){
+                pat = p;
+            }
+
+        }
+
+        return pat;
+    }
+
+
+
+    @Override
+    public boolean updatePatientAgePatientId(int existingId,int updateAge) {
+        System.out.println("updatePatientAgeByPatientId is invoked");
+         boolean isUpdated=false;
+         int i;
+        for (Patient patient:patient){
+            if(patient.getPatientId()==existingId){
+               patient.setAge(updateAge);
+               isUpdated=true;
+                System.out.println("Age is Updated");
+            }
+
+        }
+        return isUpdated;
+    }
+
+    @Override
+    public String getPatientAttenderNameByPatientId(int existingId) {
+        System.out.println("getPatientAttenderNameByPatientId is invoked");
+        String attenderName=null;
+        for (Patient p:patient) {
+            if (p.getPatientId()==existingId){
+                attenderName = p.getAttenderName();
+            }
+        }
+        return attenderName;
+
+    }
+
+    @Override
+    public String getPatientStreetNameById(int existingId) {
+        System.out.println("getPatientStreetNameById method is invoked");
+        String streetName=null;
+        for (Patient p:patient){
+            if(p.getPatientId()==existingId){
+                streetName=p.getAddress().getCountry().getState().getCity().getArea().getStreet().getStreetName();
+            }
+
+        }
+        return streetName;
     }
 
 }
